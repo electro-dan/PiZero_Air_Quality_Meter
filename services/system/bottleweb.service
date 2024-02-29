@@ -1,0 +1,14 @@
+[Unit]
+Description=Python Bottle Air Quality web page
+After=network.target
+
+[Service]
+Type=simple
+User=piair
+WorkingDirectory=/home/piair
+ExecStart=/usr/bin/python3 /home/piair/airqweb.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

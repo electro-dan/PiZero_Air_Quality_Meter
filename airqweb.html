@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pi Air Quality Monitor</title>
+    <link rel="stylesheet" href="/airqweb.css">
+  </head>
+  <body>
+    <div class="top_nav">
+      <h1>Pi Air Quality Monitor</h1>
+    </div>
+    <div class="content">
+      <div class="cards">
+        <div class="card">
+          <h2 id="">
+            Latest values
+          </h2>
+          <p>
+            <span id="latest_time"></span>
+          </p>
+        </div>
+        <div class="card">
+          <h2 id="">
+            Particulate matter
+          </h2>
+          <p>
+            PM10 = <span id="pm10"></span> &micro;g/m&sup3;<br>
+            PM2.5 = <span id="pm2_5"></span> &micro;g/m&sup3;<br>
+            PM1.0 = <span id="pm1_0"></span> &micro;g/m&sup3;<br>
+            <small>(atmospheric environment)</small>
+          </p>
+        </div>
+        <div class="card">
+          <h2 id="">
+            Environment
+          </h2>
+          <p>
+            Temperature = <span id="temperature"></span> &deg;C<br>
+            Humidity = <span id="humidity"></span> % rH<br>
+            Pressure = <span id="pressure"></span> hPa / mbar<br>
+            IAQ = <span id="iaq"></span> (0-500)<br>
+          </p>
+        </div>
+      </div>
+      <div class="spancards">
+        <div class="spancard">
+          <h2>
+            Air Quality Graph
+          </h2>
+          <div class="chart-container">
+            <canvas id="chartAirQ"></canvas>
+          </div>
+        </div>
+        <div class="spancard">
+          <h2>
+            Temperature and Humidity
+          </h2>
+          <div class="chart-container">
+            <canvas id="chartTemperatureHumidity"></canvas>
+          </div>
+        </div>
+        <div class="spancard">
+          <a href="/data">Query data</a>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/airqweb.js"></script>
+  <script>
+    
+    // Read status when page is focused
+    window.onfocus = function() {
+      queryData24hGraph();
+    }
+
+    // Read status when page is loaded
+    queryData24hGraph();
+
+  </script>
+</html>
